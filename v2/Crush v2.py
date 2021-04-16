@@ -14,7 +14,7 @@ def cr():
     crush1 = int(crush * 100)
     mas = []
     salt = ''
-    ran = 'abcdefghijklmnopqrstuvwxyz1234567890'  # Строка с рандомными символами
+    ran = str('abcdefghijklmnopqrstuvwxyz1234567890')  # Строка с рандомными символами
     for i in range(32):  # Генерируем salt
         salt = salt + ran[random.randint(0, 35)]
     salt = str(crush) + '+' + salt
@@ -22,14 +22,14 @@ def cr():
     hash1 = salt1.hexdigest()  # Соединяем с крашем и хешируем
     for i in range(100, crush1 + 1):
         mas.append(i / 100)  # Заполняем масив от 1.00 до краша с шагом 0.01
-    with open('log.txt') as f:  # Выводим последние 5 крашей
-        text = f.readlines()
+    with open('log.txt') as faille:  # Выводим последние 5 крашей
+        text = faille.readlines()
     print('Последние 5 крашей: ')
     print(text[len(text) - 1])
     for i in range(len(text) - 2, len(text) - 6, -1):
         print(text[i], end='')
     # print("lines number:", len(text)) # Закомментированый
-    f.close()
+    faille.close()
     print('Проверка на честность. HASH =', hash1)  # Выведем HASH
     st = float(input('Сумма вашей ставки: '))  # И спросим ставку когда все сгенерировано
     kf = float(input('Коэффицент: '))
@@ -78,9 +78,9 @@ def cr():
         print('Для проверки на честность переведите через SHA-256 данный текст и выведет в начале показанный HASH')
         print(salt)
         print('HASH =', hash1)
-    f = open('log.txt', 'a')
-    f.write(f"\n{crush}")  # Заносим краш в историю
-    f.close()
+    faille = open('log.txt', 'a')
+    faille.write(f"\n{crush}")  # Заносим краш в историю
+    faille.close()
     x = input('Хотите продолжить? (Да/нет)')
     if x.lower() == 'да' or x.lower() == 'yes' or x.lower() == 'y' or x.lower() == 'д' or x.lower() == 'lf':
         prob()
@@ -89,7 +89,7 @@ def cr():
 
 try:
     cr()
-except FileNotFoundError:
+except FileNotFoundError:  # Создадим файл
     f = open('log.txt', 'w')
     f.write(str(round(1 / random.random(), 2)))
     for j in range(4):
