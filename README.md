@@ -3,5 +3,6 @@
 ## Планы
 * :white_check_mark: Забилдить exe
 * :white_check_mark: Добавить рестарт
-* :negative_squared_cross_mark: Сделать графический интерфейс для приложения пк
+* :negative_squared_cross_mark: Сделать графический интерфейс
+* :negative_squared_cross_mark: Сделать приложение на пк
 * :negative_squared_cross_mark: Создать приложение для тф
